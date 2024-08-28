@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Installing HTML linter and validation tools"
+      - npm install -g htmlhint     # Install HTMLHint, a popular HTML linter
+  pre_build:
+    commands:
+      - echo "Preparing to validate HTML files"
+  build:
+    commands:
+      - echo "Validating HTML file"
+      - htmlhint yourfile.html      # Replace 'yourfile.html' with the name of your HTML file
+  post_build:
+    commands:
+      - echo "HTML validation completed"
+artifacts:
+  files:
+    - "**/*"  # Include all files in the output, adjust if needed
+  discard-paths: yes
